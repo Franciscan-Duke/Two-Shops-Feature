@@ -1,0 +1,46 @@
+Group Name: SoloCode
+Members: Noah Kelly
+
+
+//This feature is done utilizing the queue code in Quest 4.2
+
+void enterShopayer& player, Queue<Item>& stock, const string& shopName) {
+    cout << "Welcome to the " << shopName << "!" << endl;
+    //Insert your own code here -- simply the function of the shop (e.g., player gold, stock, etc.)
+    cout << "Exiting " << shopName << "." << endl;
+}
+
+int main() {
+    //Create two queues -- one for each shop
+    Queue<Item> blacksmithStock;
+    Queue<Item> generalStoreStock;
+
+    //Add items to both shops
+    blacksmithStock.enqueue(new Node<Item>(Item("Sword", 2, 50)));
+    blacksmithStock.enqueue(new Node<Item>(Item("Shield", 3, 75)));
+    blacksmithStock.enqueue(new Node<Item>(Item("Armor", 5, 150)));
+
+    generalStoreStock.enqueue(new Node<Item>(Item("Potion", 1, 25)));
+    generalStoreStock.enqueue(new Node<Item>(Item("Scroll", 1, 50)));
+    generalStoreStock.enqueue(new Node<Item>(Item("Rations", 1, 10)));
+
+    //Give player the choice of shops -- does not have to be done this way (i.e., they may be in different parts of the map)
+    while (true) {
+        cout << "\nWhich shop do you want to enter? (1 Blacksmith / 2 General Store, 0 to exit): ";
+        string shopChoice;
+        cin >> shopChoice;
+        if (shopChoice == "0") {
+            break;
+        }
+        else if (shopChoice == "1") {
+            enterShop(player, blacksmithStock, "Blacksmith");
+        }
+        else if (shopChoice == "2") {
+            enterShop(player, generalStoreStock, "General Store");
+        }
+        else {
+            cout << "Invalid choice. Please try again." << endl;
+        }
+    }
+    return 0;
+}
